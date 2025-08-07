@@ -41,11 +41,9 @@ def extract_usernames(data):
     atau list biasa.
     """
     if isinstance(data, dict):
-        # Cari key yang ada isinya dan merupakan list
         for key, value in data.items():
             if isinstance(value, list) and value:
                 return extract_usernames_from_list(value)
-        # Jika tidak ketemu, kembalikan list kosong
         return []
 
     elif isinstance(data, list):
