@@ -3,13 +3,13 @@ import json
 
 def load_json(path):
     if not os.path.exists(path):
-        print(f"⚠️  File tidak ditemukan: {path}")
+        print(f"File tidak ditemukan: {path}")
         return []
     try:
         with open(path, 'r', encoding='utf-8') as f:
             return json.load(f)
     except json.JSONDecodeError:
-        print(f"❌ Gagal membaca JSON: {path}")
+        print(f"Gagal membaca JSON: {path}")
         return []
 
 def extract_usernames_from_list(data):
@@ -85,7 +85,7 @@ def main():
     not_followed_by_you = followers - following
     mutual_follow = followers & following
 
-    print("\n📊 Statistik Instagram")
+    print("\nStatistik Instagram")
     print(f"Total Followers            : {len(followers)}")
     print(f"Total Following            : {len(following)}")
     print(f"Mutual Followers           : {len(mutual_follow)}")
