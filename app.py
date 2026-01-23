@@ -3,7 +3,7 @@ import zipfile, json, os, tempfile
 
 app = Flask(__name__)
 
-# ================= PARSER PALING AMAN =================
+
 def extract_usernames(data):
     usernames = set()
 
@@ -95,4 +95,8 @@ def index():
     return render_template("index.html", stats=stats)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=6000,
+        debug=True
+    )
