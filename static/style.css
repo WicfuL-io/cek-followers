@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top, #111, #000);
+    color: #fff;
+    min-height: 100vh;
+}
+
+.container {
+    width: 1100px;
+    margin: auto;
+    padding: 40px 0;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 42px;
+    background: linear-gradient(90deg,#a855f7,#ec4899);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.upload {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.upload input {
+    background: #111;
+    border: 1px solid #333;
+    color: #aaa;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.upload button {
+    margin-left: 10px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg,#7c3aed,#db2777);
+    color: #fff;
+    cursor: pointer;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.08);
+}
+
+.card h2 {
+    font-size: 36px;
+    margin-top: 10px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.actions button {
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    background: #1f1f1f;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    width: 520px;
+    max-height: 70vh;
+    background: #0f0f0f;
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    padding: 16px 20px;
+    background: #161616;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-header button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.user {
+    padding: 10px;
+    border-bottom: 1px solid #222;
+}
+
+
+/* ===== SEARCH INPUT (TAMBAHAN) ===== */
+.search {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+}
+
+/* ===== LIST WRAPPER ===== */
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== GUIDE BUTTON (DI KIRI CHOOSE FILE) ===== */
+.guide-btn {
+    margin-right: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* ===== GUIDE CONTENT ===== */
+.guide {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+/* ===== FOOTER / COPYRIGHT ===== */
+.footer {
+    margin-top: 60px;
+    padding: 20px 0;
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+}
+
+.footer .brand {
+    background: linear-gradient(90deg,#a855f7,#ec4899);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 600;
+}
+
+
+
+/* ===============================
+   RESPONSIVE MOBILE
+   TAMBAHAN (AMAN, TIDAK UBAH STYLE ASLI)
+================================ */
+
+@media (max-width: 768px) {
+
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    .upload {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .upload input,
+    .upload button,
+    .guide-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card {
+        padding: 24px;
+    }
+
+    .card h2 {
+        font-size: 28px;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+
+    /* MODAL MOBILE */
+    .modal-box {
+        width: 90%;
+        max-height: 80vh;
+    }
+
+    .modal-header h3 {
+        font-size: 16px;
+    }
+
+    .modal-body {
+        padding: 14px;
+    }
+
+    .user {
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+
+    .search {
+        font-size: 14px;
+    }
+}

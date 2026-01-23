@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Instagram Analytics</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Instagram Analytics</h1>
+        <p>follower & following relationship</p>
+    </header>
+
+    <section class="upload">
+        <button class="guide-btn" onclick="openModal('guide')">Panduan ZIP</button>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button>Analyze</button>
+        </form>
+    </section>
+
+    {% if stats %}
+    <section class="stats">
+        <div class="card" onclick="openModal('followers')">
+            <span>Followers</span>
+            <h2>{{ stats.followers }}</h2>
+        </div>
+        <div class="card" onclick="openModal('following')">
+            <span>Following</span>
+            <h2>{{ stats.following }}</h2>
+        </div>
+        <div class="card" onclick="openModal('mutual')">
+            <span>Mutual</span>
+            <h2>{{ stats.mutual }}</h2>
+        </div>
+    </section>
+
+    <section class="actions">
+        <button onclick="openModal('notback')">Tidak Follow Balik</button>
+        <button onclick="openModal('younot')">Kamu Tidak Follow Balik</button>
+    </section>
+    {% endif %}
+</div>
+
+<!-- MODALS -->
+{% for id,title,list in [
+('followers','Followers',stats.followers_list),
+('following','Following',stats.following_list),
+('mutual','Mutual',stats.followers_list),
+('notback','Tidak Follow Balik',stats.not_following_back),
+('younot','Kamu Tidak Follow Balik',stats.not_followed_by_you)
+] %}
+<div class="modal" id="{{ id }}">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>{{ title }}</h3>
+            <button onclick="closeModal('{{ id }}')">✕</button>
+        </div>
+        <div class="modal-body">
+            <input class="search" placeholder="Cari username..." onkeyup="filterList(this)">
+            <div class="list">
+                {% for u in list %}
+                <div class="user">{{ u }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<!-- GUIDE -->
+<div class="modal" id="guide">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>Panduan Download ZIP Instagram</h3>
+            <button onclick="closeModal('guide')">✕</button>
+        </div>
+        <div class="modal-body">
+            <ol class="guide">
+                <li>Instagram → Profile</li>
+                <li>Settings & Privacy</li>
+                <li>Accounts Center</li>
+                <li>Your information</li>
+                <li>Download your information</li>
+                <li>Pilih Followers & Following</li>
+                <li>Format JSON</li>
+                <li>Download → Upload ZIP ke sini</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>
+        © 2025 Instagram Analytics · Crafted by
+        <span class="brand">WicfuL</span>
+    </p>
+</footer>
+
+
+<script src="/static/app.js"></script>
+</body>
+</html>
