@@ -7,15 +7,29 @@ app = Flask(__name__)
 def extract_usernames(data):
     usernames = set()
 
+    def extract_from_string_list(string_list):
+        try:
+            item = string_list[0]
+            if item.get("value"):
+                return item["value"].lower()
+            if item.get("href"):
+                return item["href"].rstrip("/").split("/")[-1].lower()
+        except:
+            pass
+        return None
+
     def walk(obj):
         if isinstance(obj, dict):
             if "string_list_data" in obj:
-                try:
-                    usernames.add(obj["string_list_data"][0]["value"].lower())
-                except:
-                    pass
+                username = extract_from_string_list(
+                    obj["string_list_data"]
+                )
+                if username:
+                    usernames.add(username)
+
             for v in obj.values():
                 walk(v)
+
         elif isinstance(obj, list):
             for i in obj:
                 walk(i)
@@ -39,17 +53,32 @@ def index():
         with zipfile.ZipFile(file, "r") as zip_ref:
             zip_ref.extractall(temp_dir)
 
+        # ambil folder utama hasil extract
+        root_folder = next(
+            entry.path for entry in os.scandir(temp_dir) if entry.is_dir()
+        )
+
         base = os.path.join(
-            temp_dir,
+            root_folder,
             "followers_and_following"
         )
 
+        # followers
         followers = extract_usernames(
             load_json(os.path.join(base, "followers_1.json"))
         )
-        following = extract_usernames(
-            load_json(os.path.join(base, "following.json"))
+
+        # following (WORKS FOR ALL VERSIONS)
+        following_raw = load_json(
+            os.path.join(base, "following.json")
         )
+
+        if "relationships_following" in following_raw:
+            following = extract_usernames(
+                following_raw["relationships_following"]
+            )
+        else:
+            following = extract_usernames(following_raw)
 
         mutual = followers & following
 

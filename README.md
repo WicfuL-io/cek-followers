@@ -1,3 +1,49 @@
+# 🚀 Instalasi & Persiapan Flask
+
+Sebelum memproses data Instagram, pastikan **Python** dan **Flask** sudah terpasang di komputer kamu.
+
+---
+
+## 🐍 1. Pastikan Python Terinstal
+Cek versi Python:
+```bash
+python --version
+```
+atau:
+```bash
+python3 --version
+```
+
+## 2. Buat Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+## 3. Aktifkan virtual environment:
+
+### Linux / MacOS:
+```bash
+source venv/bin/activate
+
+```
+### Windows:
+```bash
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+venv\Scripts\activate
+```
+
+## 4. install flask:
+```bash
+pip install flask
+```
+## 5. play project
+```bash
+python app.py
+```
+**buka live server http://127.0.0.1:5000**
+---
+
 # 📦 Cara Mendapatkan Data Instagram (Followers dan Following)
 
 Panduan ini menjelaskan langkah-langkah untuk mengekspor data **followers** dan **following** dari Instagram menggunakan perangkat **HP**.
