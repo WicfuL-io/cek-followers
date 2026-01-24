@@ -107,11 +107,10 @@ Panduan ini menjelaskan langkah-langkah untuk mengekspor data **followers** dan 
 
 ---
 
-## 🗂️ Ekstrak File
+## 🗂️ upload file zip
 
-- Setelah file terunduh (dalam format ZIP), ekstrak file tersebut.
-- Buka folder hasil ekstraksi hingga kamu menemukan folder bernama:  
-  `followers_and_following`
+- Upload file tersebut pada ( Choose File )
+- Tekan `Analyze`
 
 ---
 
