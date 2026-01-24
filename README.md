@@ -49,7 +49,7 @@ python app.py
 ---
 
 ### online live server
-apa bagian app.py nyalakan baris (100 dan 101)
+pada bagian app.py nyalakan baris (100 dan 101)
 memulai project:
 ```bash
 python app.py
