@@ -44,7 +44,10 @@ memulai project:
 python app.py
 ```
 **buka live server http://127.0.0.1:5000**
+
 ---
+---
+
 ### online live server
 apa bagian app.py nyalakan baris (100 dan 101)
 memulai project:
@@ -56,7 +59,14 @@ maka akan terbuka:
  * Running on http://127.0.0.1:6000
  * Running on http://192.168.100.52:6000
 
- 
+#### pindah ke port di samping terminal pada (toggle panel / tekan crtl+j)
+lalu add port
+- isi sesuai akhir port
+```bash
+6000
+```
+- kelik kanan pada mous/mouspad lalu pilih (port visibility) ganti Private dengan => Public 
+
 ---
 
 # 📦 Cara Mendapatkan Data Instagram (Followers dan Following)
