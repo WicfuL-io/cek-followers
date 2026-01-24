@@ -96,7 +96,8 @@ def index():
 
 if __name__ == "__main__":
     app.run(
-        host="0.0.0.0",
-        port=6000,
+        # gunakan ctrl+/ untuk menghilangkan # dalam mengaktifkan baris di bawah jika ingin diakses dari jaringan port 
+        # host="0.0.0.0",
+        # port=6000,
         debug=True
     )

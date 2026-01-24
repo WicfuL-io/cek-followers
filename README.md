@@ -38,10 +38,25 @@ venv\Scripts\activate
 pip install flask
 ```
 ## 5. play project
+### local live server
+memulai project:
 ```bash
 python app.py
 ```
 **buka live server http://127.0.0.1:5000**
+---
+### online live server
+apa bagian app.py nyalakan baris (100 dan 101)
+memulai project:
+```bash
+python app.py
+```
+maka akan terbuka:
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:6000
+ * Running on http://192.168.100.52:6000
+
+ 
 ---
 
 # 📦 Cara Mendapatkan Data Instagram (Followers dan Following)
