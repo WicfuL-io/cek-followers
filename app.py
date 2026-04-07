@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import zipfile, json, os, tempfile
 
 app = Flask(__name__)
-
+app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 1024  # 1GB
 
 def extract_usernames(data):
     usernames = set()
@@ -44,6 +44,7 @@ def load_json(path):
 # ================= ROUTE =================
 @app.route("/", methods=["GET", "POST"])
 def index():
+    print("CONTENT LENGTH:", request.content_length)
     stats = None
 
     if request.method == "POST":
@@ -94,10 +95,14 @@ def index():
 
     return render_template("index.html", stats=stats)
 
+@app.errorhandler(413)
+def too_large(e):
+    return "File terlalu besar. Maksimal 200 MB.", 413
+
 if __name__ == "__main__":
     app.run(
         # gunakan ctrl+/ untuk menghilangkan # dalam mengaktifkan baris di bawah jika ingin diakses dari jaringan port 
-        # host="0.0.0.0",
-        # port=6000,
+        host="0.0.0.0",
+        port=6000,
         debug=True
     )
